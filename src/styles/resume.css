@@ -27,3 +27,38 @@
 .res-run { margin-top: var(--s2); background: none; border: 1px solid var(--coral); color: var(--coral); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
 .res-run:hover { background: var(--coral-soft); }
 .res-empty { color: var(--amber); font-family: var(--mono); font-size: 13px; }
+
+.resume { max-width: 820px; margin: 0 auto; padding: var(--s5) var(--s4) var(--s7); }
+.resume-scrollhint { text-align: center; color: var(--dim); font-family: var(--mono); font-size: 12px; margin: var(--s5) 0; }
+.resume-sec { margin-bottom: var(--s6); }
+.resume-sec h2 { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: var(--s3); }
+.resume-job { margin-bottom: var(--s4); }
+.resume-job-head { display: flex; justify-content: space-between; align-items: baseline; }
+.resume-role { font-weight: 600; }
+.resume-when { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.resume-co { color: var(--blue); font-size: 14px; margin-bottom: 4px; }
+.resume-job ul { margin-left: 18px; color: var(--dim); font-size: 13.5px; }
+.resume-job li { margin-bottom: 3px; }
+.resume-proj { margin-bottom: var(--s2); font-size: 13.5px; }
+.resume-proj-title { font-weight: 600; color: var(--green); }
+.resume-link { color: var(--blue); text-decoration: none; margin-left: 4px; font-size: 12px; }
+.resume-skill { font-size: 13.5px; margin-bottom: 4px; }
+.resume-skill-label { color: var(--coral); font-family: var(--mono); font-size: 12px; }
+.resume-header { text-align: center; margin-bottom: var(--s5); }
+.resume-header h1 { font-size: 26px; }
+.resume-title { color: var(--dim); }
+.resume-contact { font-size: 13px; }
+.resume-contact a { color: var(--blue); text-decoration: none; }
+
+/* classic = light, printable */
+.resume-classic { background: #fff; color: #1a1a1a; min-height: 100vh; }
+.resume-classic .resume-sec h2 { color: #b4582f; }
+.resume-classic .resume-co { color: #2257a8; }
+.resume-classic .resume-proj-title { color: #1c7a43; }
+@media print {
+  body { background: #fff; }
+  .statusbar, .terminal { display: none !important; }
+  .resume { max-width: 100%; padding: 0; }
+  .resume-classic { color: #000; }
+  a { color: #000; text-decoration: none; }
+}
