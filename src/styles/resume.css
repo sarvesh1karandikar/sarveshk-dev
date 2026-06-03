@@ -16,3 +16,14 @@
 }
 .statusbar-btn:hover { border-color: var(--coral); color: var(--coral); }
 @media (max-width: 640px) { .statusbar-path { display: none; } }
+
+.res-card { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: var(--s3); margin-bottom: var(--s2); font-family: var(--sans); }
+.res-card h4 { font-size: 14px; color: var(--text); }
+.res-meta { font-family: var(--mono); font-size: 11px; color: var(--dim); margin: 2px 0 var(--s2); }
+.res-card ul { margin: 0 0 var(--s2) 18px; color: var(--dim); font-size: 13px; }
+.res-card li { margin-bottom: 3px; }
+.res-tags { display: flex; flex-wrap: wrap; gap: var(--s1); }
+.res-tag { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; background: var(--coral-soft); color: var(--coral); }
+.res-run { margin-top: var(--s2); background: none; border: 1px solid var(--coral); color: var(--coral); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+.res-run:hover { background: var(--coral-soft); }
+.res-empty { color: var(--amber); font-family: var(--mono); font-size: 13px; }
