@@ -1,4 +1,4 @@
-import { gallery, beforeAfter, mockChat, note } from "./mountHelpers";
+import { gallery, mockChat, note } from "./mountHelpers";
 
 export type DemoStatus = "live" | "prebaked" | "mock";
 
@@ -20,8 +20,17 @@ export const demoRegistry: DemoEntry[] = [
     repo: "https://github.com/sarvesh1karandikar/satellite-road-detection",
     tech: ["Computer Vision"],
     status: "prebaked",
-    mount: () =>
-      beforeAfter(`${base("satellite-road-detection")}/before.jpg`, `${base("satellite-road-detection")}/after.jpg`, "Detected roads highlighted in yellow"),
+    mount: () => {
+      const w = gallery("Extracted road networks (classical CV — no neural net)", [
+        `${base("satellite-road-detection")}/roads-1.jpg`,
+        `${base("satellite-road-detection")}/roads-2.jpg`,
+        `${base("satellite-road-detection")}/roads-3.jpg`,
+      ]);
+      w.appendChild(
+        note("Pipeline: load → greyscale → K-means segmentation → morphological cleanup → connected-component road mask."),
+      );
+      return w;
+    },
   },
   {
     id: "cifar-dcgan",
@@ -42,7 +51,14 @@ export const demoRegistry: DemoEntry[] = [
     repo: "https://github.com/sarvesh1karandikar/cifar-image-classifier",
     tech: ["TensorFlow"],
     status: "prebaked",
-    mount: () => gallery("Sample predictions (75% test accuracy)", [`${base("cifar-image-classifier")}/preds.png`]),
+    mount: () => {
+      const w = gallery("Training curves — 3-layer CNN, ~75% test accuracy", [
+        `${base("cifar-image-classifier")}/accuracy.png`,
+        `${base("cifar-image-classifier")}/loss.png`,
+      ]);
+      w.appendChild(note("Accuracy climbs past 0.85 on train; loss converges over ~19k steps. Architecture: 3 conv blocks + 2 dense layers, Adam with LR decay."));
+      return w;
+    },
   },
   {
     id: "lstm-text-generator",
@@ -63,7 +79,8 @@ export const demoRegistry: DemoEntry[] = [
     tech: ["JavaScript"],
     status: "mock",
     mount: () => {
-      const w = gallery("Trading dashboard (demo data)", [`${base("alpacabot-dashboard")}/dashboard.png`]);
+      const w = gallery("Trading dashboard — terminal UI (auth gate shown; live view needs the EC2 backend)", [`${base("alpacabot-dashboard")}/dashboard.png`]);
+      w.appendChild(note("Vanilla JS terminal dashboard: polls a Bearer-authenticated EC2 API for positions, trades, and performance, rendered in a neon-green CRT theme."));
       w.classList.add("demo-green-scope");
       return w;
     },
