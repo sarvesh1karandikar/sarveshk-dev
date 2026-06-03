@@ -38,3 +38,7 @@
 .qb-cmd { font-family: var(--mono); font-size: 13px; color: var(--green); }
 .qb-run { background: var(--coral); color: var(--bg); border: none; border-radius: 7px; padding: 7px 16px; font-weight: 600; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
 .qb-run:hover { filter: brightness(1.08); }
+
+.preset-row { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s4); }
+.preset { font-family: var(--sans); font-size: 12px; padding: 5px 11px; border-radius: 20px; border: 1px solid var(--line); background: var(--panel); color: var(--dim); cursor: pointer; transition: all var(--t-fast) var(--ease); }
+.preset:hover { border-color: var(--coral); color: var(--coral); }
