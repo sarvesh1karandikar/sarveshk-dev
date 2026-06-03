@@ -20,3 +20,21 @@
   border: 1px solid var(--line); background: var(--panel); color: var(--dim); cursor: pointer;
 }
 .history-chip:hover { border-color: var(--coral); color: var(--coral); }
+
+.qb-label { font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--dim); margin: var(--s4) 0 var(--s2); }
+.qb-row { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.qb-pill { font-family: var(--mono); font-size: 12.5px; padding: 6px 12px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease); }
+.qb-pill:hover { border-color: var(--coral); }
+.qb-pill.on { background: var(--coral); color: var(--bg); border-color: var(--coral); font-weight: 600; }
+.qb-clauses { margin-top: var(--s1); border: 1px solid var(--line); border-radius: 9px; background: var(--bg-deep); padding: var(--s3); }
+.qb-clause { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s2); }
+.qb-clause:last-child { margin-bottom: 0; }
+.qb-conj { font-size: 11px; color: var(--coral); width: 40px; font-weight: 600; text-transform: uppercase; }
+.qb-key { font-family: var(--mono); font-size: 12.5px; color: var(--blue); }
+.qb-vals { display: flex; gap: var(--s1); flex-wrap: wrap; }
+.qb-val { font-family: var(--mono); font-size: 11.5px; padding: 3px 9px; border-radius: 5px; background: var(--panel); border: 1px solid var(--line); color: var(--dim); cursor: pointer; transition: all var(--t-fast) var(--ease); }
+.qb-val.on { background: rgba(125,211,252,0.13); border-color: var(--blue); color: var(--blue); }
+.qb-preview { margin-top: var(--s4); background: var(--bg-deep); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+.qb-cmd { font-family: var(--mono); font-size: 13px; color: var(--green); }
+.qb-run { background: var(--coral); color: var(--bg); border: none; border-radius: 7px; padding: 7px 16px; font-weight: 600; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+.qb-run:hover { filter: brightness(1.08); }
