@@ -1,0 +1,42 @@
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+
+:root {
+  /* warm coral base */
+  --bg: #1c1714;
+  --bg-deep: #16110e;
+  --panel: #231c18;
+  --line: #352b24;
+  --text: #e7ddd2;
+  --dim: #9c8f82;
+  --coral: #d97757;
+  --coral-soft: rgba(217, 119, 87, 0.13);
+  /* syntax accents */
+  --blue: #7dd3fc;
+  --green: #86efac;
+  --purple: #c4b5fd;
+  --amber: #fbbf24;
+  /* type */
+  --mono: "JetBrains Mono", "SF Mono", Menlo, ui-monospace, monospace;
+  --sans: "Inter", -apple-system, system-ui, sans-serif;
+  /* spacing scale */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
+  --radius: 10px;
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --t-fast: 120ms;
+  --t-med: 220ms;
+  --type-cadence: 14ms; /* ms per char in typewriter */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #0d0d0f; color: var(--text); font-family: var(--sans); line-height: 1.55; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  :root { --type-cadence: 0ms; --t-fast: 0ms; --t-med: 0ms; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
