@@ -152,8 +152,8 @@ export const resume: ResumeData = {
     },
   ],
   contact: {
-    email: "hi@sarveshk.dev", // INPUT NEEDED: confirm preferred public email
+    email: "sarvesh1karandikar@gmail.com",
     github: "https://github.com/sarvesh1karandikar",
-    linkedin: undefined, // INPUT NEEDED: LinkedIn URL before launch
+    linkedin: "https://www.linkedin.com/in/sarveshkarandikar/",
   },
 };
