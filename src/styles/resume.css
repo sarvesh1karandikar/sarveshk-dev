@@ -1,0 +1,18 @@
+.statusbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 0;
+  font-family: var(--mono); font-size: 12px;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+.statusbar-seg { padding: 8px 12px; }
+.statusbar-name { background: var(--coral); color: var(--bg); font-weight: 600; letter-spacing: 0.02em; }
+.statusbar-avail { color: var(--green); }
+.statusbar-path { color: var(--dim); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.statusbar-actions { display: flex; gap: var(--s2); padding-right: var(--s3); }
+.statusbar-btn {
+  font-size: 11px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 7px;
+  background: var(--panel); color: var(--text); text-decoration: none; transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.statusbar-btn:hover { border-color: var(--coral); color: var(--coral); }
+@media (max-width: 640px) { .statusbar-path { display: none; } }

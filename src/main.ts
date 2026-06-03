@@ -1,4 +1,6 @@
 import "./styles/tokens.css";
+import "./styles/resume.css";
+import { renderStatusBar } from "./statusbar";
 
-const app = document.querySelector<HTMLDivElement>("#app");
-if (app) app.textContent = "sarveshk.dev — booting…";
+const app = document.querySelector<HTMLDivElement>("#app")!;
+app.appendChild(renderStatusBar());
