@@ -62,3 +62,11 @@
   .resume-classic { color: #000; }
   a { color: #000; text-decoration: none; }
 }
+
+.res-run:focus-visible,
+.statusbar-btn:focus-visible,
+.resume-link:focus-visible,
+.resume-contact a:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}

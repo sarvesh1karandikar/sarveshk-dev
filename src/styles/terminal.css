@@ -42,3 +42,21 @@
 .preset-row { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s4); }
 .preset { font-family: var(--sans); font-size: 12px; padding: 5px 11px; border-radius: 20px; border: 1px solid var(--line); background: var(--panel); color: var(--dim); cursor: pointer; transition: all var(--t-fast) var(--ease); }
 .preset:hover { border-color: var(--coral); color: var(--coral); }
+
+/* keyboard focus visibility */
+.qb-pill:focus-visible,
+.qb-val:focus-visible,
+.qb-run:focus-visible,
+.preset:focus-visible,
+.history-chip:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .terminal { margin: var(--s5) var(--s3) var(--s4); }
+  .terminal-body { padding: var(--s3); font-size: 12.5px; }
+  .qb-preview { flex-direction: column; align-items: stretch; gap: var(--s2); }
+  .qb-run { width: 100%; }
+  .qb-conj { width: auto; }
+}

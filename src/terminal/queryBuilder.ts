@@ -22,13 +22,13 @@ export function createQueryBuilder(schema: Schema): BuilderHandle {
     const paramOpts = schema[state.subject] as Record<string, string[]>;
     root.innerHTML = `
       <div class="qb-label">1 · Subject</div>
-      <div class="qb-row qb-subjects">
+      <div class="qb-row qb-subjects" role="group" aria-label="Choose a subject">
         ${SUBJECTS.map(
-          (s) => `<button class="qb-pill ${s === state.subject ? "on" : ""}" data-subject="${s}">${s}</button>`,
+          (s) => `<button type="button" class="qb-pill ${s === state.subject ? "on" : ""}" data-subject="${s}" aria-pressed="${s === state.subject ? "true" : "false"}">${s}</button>`,
         ).join("")}
       </div>
       <div class="qb-label">2 · Filters</div>
-      <div class="qb-clauses">
+      <div class="qb-clauses" role="group" aria-label="Add filters">
         ${Object.keys(paramOpts)
           .map((param, idx) => {
             const selected = (state.clauses as Record<string, string[]>)[param] || [];
@@ -39,7 +39,7 @@ export function createQueryBuilder(schema: Schema): BuilderHandle {
                 ${paramOpts[param]
                   .map(
                     (v) =>
-                      `<button class="qb-val ${selected.includes(v) ? "on" : ""}" data-param="${param}" data-val="${v}">${v}</button>`,
+                      `<button type="button" class="qb-val ${selected.includes(v) ? "on" : ""}" data-param="${param}" data-val="${v}" aria-pressed="${selected.includes(v) ? "true" : "false"}">${v}</button>`,
                   )
                   .join("")}
               </span>
@@ -49,7 +49,7 @@ export function createQueryBuilder(schema: Schema): BuilderHandle {
       </div>
       <div class="qb-preview">
         <span class="qb-cmd">${serializeToCommand(state)}</span>
-        <button class="qb-run">Run query ↵</button>
+        <button type="button" class="qb-run">Run query ↵</button>
       </div>`;
 
     root.querySelectorAll<HTMLButtonElement>("[data-subject]").forEach((b) =>
