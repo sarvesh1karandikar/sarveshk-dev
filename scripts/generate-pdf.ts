@@ -380,17 +380,17 @@ const RESUME_HTML = `<!doctype html>
       <div class="proj-item">
         <span class="pn">AlpacaBot</span>
         <span class="pd">Weekly-options trading agent — Alpaca execution, Telegram control, terminal dashboard, AWS-hosted.</span>
-        <a href="https://github.com/sarvesh1karandikar/alpacabot-dashboard">gh ↗</a>
+        <a href="https://github.com/sarvesh1karandikar/alpacabot-dashboard">GitHub ↗</a>
       </div>
       <div class="proj-item">
         <span class="pn">chromadb RAG</span>
         <span class="pd">FastAPI ingest + semantic retrieval with centroid-based collection routing.</span>
-        <a href="https://github.com/sarvesh1karandikar/chromadb">gh ↗</a>
+        <a href="https://github.com/sarvesh1karandikar/chromadb">GitHub ↗</a>
       </div>
       <div class="proj-item">
         <span class="pn">DriveSuite</span>
         <span class="pd">WhatsApp → Jellyfin/Sonarr media bridge — local Llama for intent, Claude for execution.</span>
-        <a href="https://github.com/sarvesh1karandikar/DriveSuite">gh ↗</a>
+        <a href="https://github.com/sarvesh1karandikar/DriveSuite">GitHub ↗</a>
       </div>
     </div>
   </div>

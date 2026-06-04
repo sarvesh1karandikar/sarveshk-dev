@@ -111,7 +111,7 @@ export function renderProjects(projects: Project[]): string {
     <div class="card" data-project="${esc(p.id)}">
       <div class="top">
         <div class="ico">${esc(p.icon)}</div>
-        <span class="src">GitHub ↗</span>
+        <a href="${esc(p.githubUrl)}" class="src" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub ↗</a>
       </div>
       <h3>
         ${esc(p.title)}

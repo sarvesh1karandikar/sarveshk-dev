@@ -101,6 +101,10 @@ a {
   color: #fff;
 }
 
+.nav .links a.active {
+  color: var(--teal);
+}
+
 .nav .cta {
   font-size: 13.5px;
   padding: 9px 17px;
@@ -602,6 +606,12 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 3px 8px;
+  text-decoration: none;
+}
+
+.card .src:hover {
+  border-color: var(--teal);
+  color: var(--teal);
 }
 
 .card h3 {
