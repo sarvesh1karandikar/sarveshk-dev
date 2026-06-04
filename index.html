@@ -1,23 +1,338 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Sarvesh Karandikar — Software Engineer</title>
-    <meta name="description" content="Interactive terminal resume of Sarvesh Karandikar, software engineer at Cisco." />
-    <meta property="og:title" content="Sarvesh Karandikar — Software Engineer" />
-    <meta property="og:description" content="Build a query to explore my experience, projects, and skills." />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://sarveshk.dev/" />
-    <meta name="theme-color" content="#1c1714" />
-    <meta property="og:url" content="https://sarveshk.dev/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sarvesh Karandikar — Software Engineer" />
-    <meta name="twitter:description" content="Build a query to explore my experience, projects, and skills." />
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Sarvesh Karandikar — Senior Software Engineer</title>
+  <meta name="description" content="Sarvesh Karandikar — Senior Software Engineer at Cisco. Backend & infrastructure engineer building full-stack AI: agentic systems, developer platforms, and the tooling that ships LLMs to production." />
+  <link rel="canonical" href="https://sarveshk.dev/" />
+  <meta name="theme-color" content="#070710" />
+  <meta property="og:title" content="Sarvesh Karandikar — Senior Software Engineer" />
+  <meta property="og:description" content="Backend & infra engineer at Cisco, now building full-stack AI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sarveshk.dev/" />
+  <meta property="og:image" content="https://sarveshk.dev/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sarvesh Karandikar — Senior Software Engineer" />
+  <meta name="twitter:description" content="Backend & infra engineer at Cisco, now building full-stack AI." />
+  <meta name="twitter:image" content="https://sarveshk.dev/og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#070710;--line:rgba(255,255,255,.09);--text:#f2f2fb;--dim:#b2b2c8;--dim2:#7c7c96;--violet:#a78bfa;--teal:#37f5c5;--blue:#7cc4ff;--pink:#ff7cae;--amber:#fbbf24}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
+    a{color:inherit;text-decoration:none}
+
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 30px;background:rgba(7,7,16,.65);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav .logo{font-weight:700;font-size:16px}.nav .logo .d{color:var(--violet)}
+    .nav .links{display:flex;gap:26px;font-size:14px;color:var(--dim)}
+    .nav .links a:hover{color:#fff}
+    .nav .cta{font-size:13.5px;padding:9px 17px;border-radius:9px;background:linear-gradient(110deg,#7c5cff,#5b8cff);color:#fff;font-weight:600}
+
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:120px 0 70px}
+    #net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+    .glow{position:absolute;inset:0;z-index:0;background:radial-gradient(55% 50% at 18% 12%,rgba(124,92,255,.26),transparent 70%),radial-gradient(48% 45% at 88% 28%,rgba(46,230,210,.16),transparent 70%),radial-gradient(60% 55% at 65% 102%,rgba(255,92,170,.12),transparent 70%);pointer-events:none;animation:float 14s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-18px) scale(1.04)}}
+    .hero .in{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 30px;width:100%}
+    .badge{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;padding:7px 16px;border-radius:30px;border:1px solid rgba(140,120,255,.35);background:rgba(124,92,255,.12);backdrop-filter:blur(6px);color:#d3ccff;margin-bottom:30px;font-weight:500}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    h1.big{font-size:clamp(52px,7.6vw,98px);line-height:1.02;font-weight:800;letter-spacing:-.035em;margin-bottom:28px}
+    h1.big .g{background:linear-gradient(110deg,#a78bfa,#37f5c5,#7cc4ff,#a78bfa);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+    @keyframes shift{to{background-position:300% 0}}
+    .lead{font-size:clamp(18px,2.1vw,23px);color:var(--dim);max-width:680px;margin-bottom:32px;line-height:1.55}
+    .arc{display:flex;margin-bottom:38px;border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:740px;background:rgba(7,7,16,.4);backdrop-filter:blur(6px)}
+    .arc .step{flex:1;padding:16px 20px}.arc .step:not(:last-child){border-right:1px solid var(--line)}
+    .arc .step .yr{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--dim2);margin-bottom:5px}
+    .arc .step .nm{font-size:15px;font-weight:700}
+    .arc .s1 .nm{color:var(--blue)}.arc .s2 .nm{color:var(--violet)}.arc .s3 .nm{color:var(--teal)}
+    .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .b1{padding:15px 30px;border-radius:12px;background:linear-gradient(110deg,#7c5cff,#5b8cff);color:#fff;font-weight:600;font-size:16px;transition:.2s}
+    .b1:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(124,92,255,.4)}
+    .b2{padding:15px 30px;border-radius:12px;border:1px solid rgba(255,255,255,.18);color:var(--text);font-weight:600;font-size:16px;background:rgba(255,255,255,.04);transition:.2s}
+    .b2:hover{border-color:rgba(255,255,255,.4)}
+
+    section{padding:92px 0;position:relative;z-index:2}
+    .label{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:11px}
+    .label::before{content:"";width:28px;height:1px;background:currentColor;opacity:.55}
+    h2{font-size:clamp(32px,4.2vw,50px);font-weight:800;letter-spacing:-.025em;margin-bottom:14px;line-height:1.08}
+    .section-lead{color:var(--dim);font-size:18px;max-width:620px;margin-bottom:46px;line-height:1.5}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+
+    .exp .label{color:var(--violet)}
+    .timeline{position:relative;margin-left:8px;border-left:2px solid transparent;border-image:linear-gradient(180deg,var(--teal),var(--violet) 55%,var(--blue)) 1}
+    .job{position:relative;padding:0 0 24px 32px}
+    .job::before{content:"";position:absolute;left:-7px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--violet)}
+    .job.ai::before{border-color:var(--teal);box-shadow:0 0 14px var(--teal)}
+    .job.infra::before{border-color:var(--blue)}
+    .jobcard{border:1px solid var(--line);border-radius:18px;padding:26px 30px;background:rgba(255,255,255,.022);transition:.25s}
+    .jobcard:hover{border-color:rgba(167,139,250,.35);transform:translateX(3px)}
+    .job.ai .jobcard{background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(46,230,210,.05));border-color:rgba(167,139,250,.25)}
+    .job .head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+    .job .role{font-size:20px;font-weight:700;letter-spacing:-.01em}
+    .job.ai .role{font-size:23px}
+    .job .when{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim2)}
+    .job .co{color:var(--blue);font-size:15px;margin:4px 0 15px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .job .co .plink{font-size:12px;color:var(--teal);border:1px solid rgba(55,245,197,.3);border-radius:20px;padding:3px 11px}
+    .evidence{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:15px}
+    .ev{font-size:13px;padding:6px 12px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--text);display:flex;align-items:center;gap:7px}
+    .ev .k{color:var(--amber);font-weight:700;font-family:'JetBrains Mono',monospace;font-size:11.5px}
+    .job ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:15px}
+    .job li{font-size:15px;color:var(--dim);padding-left:19px;position:relative}
+    .job li::before{content:"\\25B9";position:absolute;left:0;color:var(--violet)}
+    .chips{display:flex;flex-wrap:wrap;gap:7px}
+    .chip{font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:4px 10px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--dim)}
+
+    .proj .label{color:var(--teal)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;border:1px solid var(--line);border-radius:18px;padding:24px;background:rgba(255,255,255,.03);transition:.25s;cursor:pointer;overflow:hidden}
+    .card::before{content:"";position:absolute;inset:0;background:radial-gradient(120px 120px at var(--mx,50%) var(--my,0%),rgba(55,245,197,.12),transparent 70%);opacity:0;transition:.3s}
+    .card:hover::before{opacity:1}
+    .card:hover{border-color:rgba(55,245,197,.4);transform:translateY(-4px)}
+    .card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;position:relative}
+    .card .ico{width:42px;height:42px;border-radius:11px;background:rgba(55,245,197,.12);border:1px solid rgba(55,245,197,.25);display:grid;place-items:center;font-size:19px}
+    .card .src{font-size:11px;font-weight:600;color:var(--dim2);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+    .card h3{font-size:18px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:9px;position:relative}
+    .card .demo{font-size:10px;font-weight:700;color:#0a0a0a;background:var(--teal);border-radius:5px;padding:2px 7px}
+    .card p{color:var(--dim);font-size:14px;margin-bottom:14px;position:relative}
+    .card .open{font-size:13px;color:var(--teal);font-weight:600;position:relative}
+
+    .acad .label{color:var(--dim2)}.acad h2{font-size:27px}
+    .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:6px}
+    .minicard{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.014);transition:.2s}
+    .minicard:hover{background:rgba(255,255,255,.03)}
+    .minicard .n{font-size:15px;font-weight:600;margin-bottom:4px}
+    .minicard .d{font-size:12.5px;color:var(--dim2)}
+    .minicard .t{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);margin-top:8px}
+    .ghlink{display:inline-flex;margin-top:20px;font-size:14px;color:var(--dim);border:1px solid var(--line);padding:9px 18px;border-radius:10px}
+    .ghlink:hover{border-color:var(--violet);color:#fff}
+
+    .skills .label{color:var(--pink)}
+    .skillmap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+    .skillcol{border:1px solid var(--line);border-radius:18px;padding:28px}
+    .skillcol.infra{background:linear-gradient(160deg,rgba(124,196,255,.08),transparent)}
+    .skillcol.ai{background:linear-gradient(160deg,rgba(55,245,197,.08),transparent)}
+    .skillcol .world{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:5px}
+    .skillcol.infra .world{color:var(--blue)}.skillcol.ai .world{color:var(--teal)}
+    .skillcol .wsub{font-size:13px;color:var(--dim2);margin-bottom:18px}
+    .skillcol .grp{margin-bottom:15px}
+    .skillcol .gh{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+    .skillcol .items{display:flex;flex-wrap:wrap;gap:6px}
+    .bridge{text-align:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim2);margin-top:20px}
+
+    .contact{text-align:center;padding:110px 0}.contact .label{justify-content:center;color:var(--dim2)}
+    .contact h2{font-size:clamp(38px,5.2vw,62px)}
+    .contact .g{background:linear-gradient(110deg,#a78bfa,#37f5c5);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .contact .row{justify-content:center;margin-top:32px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim2);font-size:13.5px;text-align:center;position:relative;z-index:2}
+
+    .overlay{position:fixed;inset:0;z-index:300;background:rgba(4,4,10,.78);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding:60px 20px;overflow-y:auto}
+    .overlay.on{display:flex}
+    .modal{max-width:760px;width:100%;background:linear-gradient(160deg,#101020,#0a0a16);border:1px solid var(--line);border-radius:22px;overflow:hidden;animation:rise .3s cubic-bezier(.2,.6,.2,1)}
+    @keyframes rise{from{opacity:0;transform:translateY(20px)}}
+    .modal .banner{height:140px;background:linear-gradient(120deg,rgba(124,92,255,.35),rgba(46,230,210,.22));position:relative;display:flex;align-items:flex-end;padding:22px 28px}
+    .modal .banner .x{position:absolute;top:16px;right:18px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.3);border:1px solid var(--line);color:#fff;display:grid;place-items:center;cursor:pointer;font-size:16px}
+    .modal .banner h3{font-size:26px;font-weight:800;letter-spacing:-.02em}
+    .modal .body{padding:28px}
+    .modal .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+    .modal .cs{margin-bottom:18px}
+    .modal .cs .h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+    .modal .cs p{font-size:15px;color:var(--dim);line-height:1.6}
+    .modal .actions{display:flex;gap:10px;margin-top:8px}
+    .modal .actions a{flex:1;text-align:center;padding:12px;border-radius:10px;font-weight:600;font-size:14px}
+    .modal .gh{border:1px solid var(--line);color:var(--text)}
+
+    @media(max-width:820px){.cards,.mini{grid-template-columns:1fr}.skillmap{grid-template-columns:1fr}.arc{flex-direction:column}.arc .step:not(:last-child){border-right:none;border-bottom:1px solid var(--line)}.nav .links{display:none}}
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <span class="logo">sarvesh<span class="d">k</span>.dev</span>
+    <div class="links"><a href="#exp">Experience</a><a href="#proj">Projects</a><a href="#acad">Academic</a><a href="#skills">Skills</a></div>
+    <a href="/resume/sarvesh-karandikar.pdf" class="cta" download>Résumé ↓</a>
+  </div>
+
+  <header class="hero">
+    <canvas id="net"></canvas>
+    <div class="glow"></div>
+    <div class="in">
+      <span class="badge"><span class="dot"></span>Senior Software Engineer · Cisco</span>
+      <h1 class="big">Sarvesh Karandikar.<br>Backend &amp; infra engineer,<br>now building <span class="g">AI — full-stack</span>.</h1>
+      <p class="lead">I spent five years engineering backend, cloud, and security infrastructure at Cisco — then carried that rigor into AI. Today I ship agentic systems end to end: the models, the platform, and the tooling.</p>
+      <div class="arc">
+        <div class="step s1"><div class="yr">2019 — 2023</div><div class="nm">Backend + Infra</div></div>
+        <div class="step s2"><div class="yr">2023 — 2025</div><div class="nm">Platform + Security</div></div>
+        <div class="step s3"><div class="yr">2025 — now</div><div class="nm">Full-stack AI</div></div>
+      </div>
+      <div class="row"><a href="#exp" class="b1">See the proof →</a><a href="/resume/sarvesh-karandikar.pdf" class="b2" download>Résumé</a></div>
+    </div>
+  </header>
+
+  <section class="exp" id="exp"><div class="wrap reveal">
+    <div class="label">01 — Experience</div>
+    <h2>The throughline</h2>
+    <p class="section-lead">Each role built on the last — infrastructure rigor, then platform scale, then AI. The spine runs blue → violet → teal.</p>
+    <div class="timeline">
+      <div class="job ai"><div class="jobcard">
+        <div class="head"><span class="role">Senior Software Engineer — AI Canvas</span><span class="when">Oct 2025 — present</span></div>
+        <div class="co">Cisco Systems</div>
+        <div class="evidence"><span class="ev"><span class="k">SHIPPED</span> Multimodal deep agents</span><span class="ev"><span class="k">SDK</span> Claude Agent SDK + MCP</span><span class="ev"><span class="k">SCALE</span> Self-serve partner platform</span></div>
+        <ul><li>Built multimodal Canvas Deep Agent — reasons over images, documents, and network captures across fast and plan-execute modes.</li><li>Designed a secure file pipeline: gRPC → presigned S3 streaming (SSRF-guarded), Redis manifest store, MCP file-reader tooling.</li><li>Own the Knowledge-Base SDK and skill/MCP-server registration powering self-serve partner onboarding.</li></ul>
+        <div class="chips"><span class="chip">Claude Agent SDK</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">gRPC</span><span class="chip">Redis</span><span class="chip">AWS</span></div>
+      </div></div>
+      <div class="job infra"><div class="jobcard">
+        <div class="head"><span class="role">Software Engineer — Nexus Dashboard</span><span class="when">Nov 2023 — Sep 2025</span></div>
+        <div class="co">Cisco Systems</div>
+        <div class="evidence"><span class="ev"><span class="k">BUILT</span> K8s PKI cert-management</span><span class="ev"><span class="k">LANG</span> Java leader-election framework</span></div>
+        <ul><li>Designed a Certificate Management System for automated CA creation and secure signing across Kubernetes communications.</li><li>Enhanced external-CA integration to onboard Cisco XE/XR devices; built an agent-based Postgres/TSDB management interface.</li><li>Implemented an SPI-based Java leader-election framework for active-standby configurations.</li></ul>
+        <div class="chips"><span class="chip">Java</span><span class="chip">Go</span><span class="chip">Kubernetes</span><span class="chip">Postgres</span><span class="chip">PKI</span></div>
+      </div></div>
+      <div class="job infra"><div class="jobcard">
+        <div class="head"><span class="role">Software Engineer — Cloud Network Controller</span><span class="when">Jul 2020 — Oct 2023</span></div>
+        <div class="co">Cisco Systems</div>
+        <div class="evidence"><span class="ev"><span class="k">MULTI-CLOUD</span> GCP + AWS + Azure ACI</span><span class="ev"><span class="k">SECURITY</span> L4–L7 drift detection</span><span class="ev"><span class="k">IaC</span> Terraform graph-DB</span></div>
+        <ul><li>Integrated GCP into the ACI model-based cloud-networking solution for multi-cloud compatibility and scale.</li><li>Built config-drift security detection across L4–L7 service chains and a Terraform collection service feeding a unified graph database.</li><li>Created a firewall-configuration analysis service using Binary Decision Diagrams to assess connectivity and traffic flows.</li></ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Terraform</span><span class="chip">GCP</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Dgraph</span></div>
+      </div></div>
+      <div class="job infra"><div class="jobcard">
+        <div class="head"><span class="role">Earlier — USC Supply Chain · Circle Link (fintech)</span><span class="when">2019 — 2020</span></div>
+        <div class="co">Web Developer · ML Engineer Intern</div>
+        <div class="evidence"><span class="ev"><span class="k">ML</span> NER + OCR/MICR fine-tuning</span></div>
+        <ul><li>Built NER models classifying entities in loan documents with Elasticsearch indexing; fine-tuned OCR/MICR check recognition.</li></ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Elasticsearch</span></div>
+      </div></div>
+    </div>
+  </div></section>
+
+  <section class="proj" id="proj"><div class="wrap reveal">
+    <div class="label">02 — Projects</div>
+    <h2>Full-stack proof — built &amp; shipped solo</h2>
+    <p class="section-lead">Things I designed and shipped myself, AI work first. Click any card for the case study.</p>
+    <div class="cards">
+      <div class="card" onclick="openCS('alpaca')"><div class="top"><div class="ico">▣</div><span class="src">GitHub ↗</span></div><h3>AlpacaBot</h3><p>Weekly-options trading agent — Alpaca execution, Telegram control, terminal dashboard, AWS-hosted.</p><div class="open">View case study →</div></div>
+      <div class="card" onclick="openCS('chroma')"><div class="top"><div class="ico">⬡</div><span class="src">GitHub ↗</span></div><h3>chromadb RAG</h3><p>FastAPI ingest + semantic retrieval with centroid-based collection routing.</p><div class="open">View case study →</div></div>
+      <div class="card" onclick="openCS('drive')"><div class="top"><div class="ico">◈</div><span class="src">GitHub ↗</span></div><h3>DriveSuite</h3><p>WhatsApp → Jellyfin/Sonarr media bridge — local Llama for intent, Claude for execution.</p><div class="open">View case study →</div></div>
+    </div>
+  </div></section>
+
+  <section class="acad" id="acad"><div class="wrap reveal">
+    <div class="label">03 — Academic & ML</div>
+    <h2>Where the AI foundation started</h2>
+    <p class="section-lead">USC &amp; SRM coursework and research — the ML groundwork that made the pivot natural.</p>
+    <div class="mini">
+      <div class="minicard"><div class="n">DCGAN Image Synthesis</div><div class="d">Generative adversarial net, CIFAR-10</div><div class="t">TensorFlow</div></div>
+      <div class="minicard"><div class="n">FAQ Chatbot (LLaMA 2-7B)</div><div class="d">Local RAG over PDFs</div><div class="t">Python · LLaMA</div></div>
+      <div class="minicard"><div class="n">CIFAR-10 Classifier</div><div class="d">CNN, ~75% test accuracy</div><div class="t">TensorFlow</div></div>
+      <div class="minicard"><div class="n">LSTM Text Generator</div><div class="d">From-scratch NumPy RNN/LSTM</div><div class="t">NumPy</div></div>
+      <div class="minicard"><div class="n">Satellite Road Detection</div><div class="d">Classical CV road extraction</div><div class="t">MATLAB</div></div>
+      <div class="minicard"><div class="n">Offspring Face GAN</div><div class="d">Conditional face generation</div><div class="t">TensorFlow</div></div>
+    </div>
+    <a class="ghlink" href="https://github.com/sarvesh1karandikar" target="_blank" rel="noopener">All repos on GitHub ↗</a>
+  </div></section>
+
+  <section class="skills" id="skills"><div class="wrap reveal">
+    <div class="label">04 — Toolkit</div>
+    <h2>Fluent in both worlds</h2>
+    <p class="section-lead">The whole point: a stack that spans infrastructure AND AI — that's what full-stack-AI means here.</p>
+    <div class="skillmap">
+      <div class="skillcol infra"><div class="world">⬡ Backend &amp; Infrastructure</div><div class="wsub">The foundation — 5 years deep</div>
+        <div class="grp"><div class="gh">Languages</div><div class="items"><span class="chip">Go</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">GraphQL</span></div></div>
+        <div class="grp"><div class="gh">Orchestration</div><div class="items"><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">OCI</span><span class="chip">Stacker</span></div></div>
+        <div class="grp"><div class="gh">Cloud · Data</div><div class="items"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">GCP</span><span class="chip">Terraform</span><span class="chip">Dgraph</span><span class="chip">Postgres</span></div></div>
+      </div>
+      <div class="skillcol ai"><div class="world">✦ AI &amp; Machine Learning</div><div class="wsub">Where it's all heading</div>
+        <div class="grp"><div class="gh">Agents · LLM</div><div class="items"><span class="chip">Claude Agent SDK</span><span class="chip">MCP</span><span class="chip">RAG</span><span class="chip">Bedrock</span></div></div>
+        <div class="grp"><div class="gh">Frameworks</div><div class="items"><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">NLTK</span></div></div>
+        <div class="grp"><div class="gh">Shared bridge</div><div class="items"><span class="chip">Python</span><span class="chip">gRPC</span><span class="chip">Redis</span></div></div>
+      </div>
+    </div>
+    <p class="bridge">Python · gRPC · AWS — the bridge that ties both worlds together.</p>
+  </div></section>
+
+  <section class="contact" id="contact"><div class="wrap reveal">
+    <div class="label">Get in touch</div>
+    <h2>Let's build something <span class="g">solid</span>.</h2>
+    <div class="row">
+      <a href="mailto:sarvesh1karandikar@gmail.com" class="b1">sarvesh1karandikar@gmail.com</a>
+      <a href="https://www.linkedin.com/in/sarveshkarandikar/" class="b2" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/sarvesh1karandikar" class="b2" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div></section>
+
+  <footer>© 2026 Sarvesh Karandikar · sarveshk.dev</footer>
+
+  <div class="overlay" id="ov">
+    <div class="modal">
+      <div class="banner"><span class="x" onclick="closeCS()">✕</span><h3 id="cs-title">Project</h3></div>
+      <div class="body">
+        <div class="meta chips" id="cs-chips"></div>
+        <div class="cs"><div class="h">The problem</div><p id="cs-prob"></p></div>
+        <div class="cs"><div class="h">My approach</div><p id="cs-appr"></p></div>
+        <div class="cs"><div class="h">Outcome</div><p id="cs-out"></p></div>
+        <div class="actions"><a class="gh" id="cs-gh" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // node-network hero
+  const cv=document.getElementById('net'),ctx=cv.getContext('2d');let W,H,pts=[],mouse={x:-999,y:-999};
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;init()}
+  function init(){pts=[];const n=Math.min(70,Math.floor(W*H/16000));for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3})}
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      const dx=p.x-mouse.x,dy=p.y-mouse.y,md=Math.hypot(dx,dy);if(md<140&&md>0){p.x+=dx/md*.6;p.y+=dy/md*.6}}
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<130){const o=(1-d/130)*.5;ctx.strokeStyle='rgba(140,150,255,'+o+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+    for(const p of pts){const near=Math.hypot(p.x-mouse.x,p.y-mouse.y)<140;ctx.fillStyle=near?'rgba(55,245,197,.9)':'rgba(167,139,250,.7)';ctx.beginPath();ctx.arc(p.x,p.y,near?3:2,0,7);ctx.fill()}
+    requestAnimationFrame(tick)
+  }
+  addEventListener('resize',size);
+  const hero=document.querySelector('.hero');
+  hero.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+  hero.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999});
+  size();if(!reduce)tick();else{ctx.clearRect(0,0,W,H);}
+
+  // scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // card cursor glow
+  document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+
+  // case studies
+  const CS={
+    alpaca:{title:'AlpacaBot',gh:'https://github.com/sarvesh1karandikar/alpacabot-dashboard',chips:['Python','AWS','LLM','Telegram'],
+      prob:'I wanted an automated weekly-options strategy I could monitor and control from my phone — without babysitting a terminal.',
+      appr:'Built a trading agent that executes via the Alpaca API on a schedule, with an LLM layer for decision support, a Telegram bot for control, and a terminal-style dashboard for live monitoring — all running on AWS.',
+      out:'Runs autonomously on EC2; controlled entirely over Telegram with positions and PnL visible on the dashboard in real time.'},
+    chroma:{title:'chromadb RAG Pipeline',gh:'https://github.com/sarvesh1karandikar/chromadb',chips:['FastAPI','RAG','ChromaDB','PyTorch'],
+      prob:'RAG systems get slow and noisy as document collections grow and topics drift apart.',
+      appr:'A FastAPI ingest + retrieval backend that chunks and embeds documents, then routes queries using centroid-based collection clustering so each query only searches the most relevant cluster.',
+      out:'Cleaner retrieval and faster queries at scale; model-agnostic so it plugs into any LLM endpoint.'},
+    drive:{title:'DriveSuite',gh:'https://github.com/sarvesh1karandikar/DriveSuite',chips:['Node.js','Docker','Ollama','Claude'],
+      prob:'I wanted to manage my home media server (Jellyfin/Sonarr/Radarr) by just texting it on WhatsApp.',
+      appr:'A Node bridge connecting the WhatsApp Cloud API to the media stack, with smart model routing — local Llama 3.1 for cheap intent parsing, Claude for the calls that need real reasoning — all Docker-orchestrated.',
+      out:'"Add Breaking Bad" over WhatsApp queues the download and reports status. Cost-efficient by keeping routine parsing local.'}
+  };
+  function openCS(k){const d=CS[k];document.getElementById('cs-title').textContent=d.title;
+    document.getElementById('cs-chips').innerHTML=d.chips.map(c=>'<span class="chip">'+c+'</span>').join('');
+    document.getElementById('cs-prob').textContent=d.prob;document.getElementById('cs-appr').textContent=d.appr;document.getElementById('cs-out').textContent=d.out;
+    document.getElementById('cs-gh').href=d.gh;document.getElementById('ov').classList.add('on')}
+  function closeCS(){document.getElementById('ov').classList.remove('on')}
+  document.getElementById('ov').addEventListener('click',e=>{if(e.target.id==='ov')closeCS()});
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeCS()});
+</script>
+</body>
 </html>
