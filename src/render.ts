@@ -239,7 +239,7 @@ export function renderContact(links: SiteLinks): string {
 // ---- Footer ----
 
 export function renderFooter(): string {
-  return `<footer>© 2026 Sarvesh Karandikar · sarveshk.dev</footer>`;
+  return `<footer>© 2026 Sarvesh Karandikar · resume.sarveshk.dev</footer>`;
 }
 
 // ---- Case-study modal shell ----

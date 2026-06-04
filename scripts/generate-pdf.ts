@@ -284,7 +284,7 @@ const RESUME_HTML = `<!doctype html>
       <span>sarvesh1karandikar@gmail.com</span>
       <span>linkedin.com/in/sarveshkarandikar</span>
       <span>github.com/sarvesh1karandikar</span>
-      <span>sarveshk.dev</span>
+      <span>resume.sarveshk.dev</span>
     </div>
   </div>
 
