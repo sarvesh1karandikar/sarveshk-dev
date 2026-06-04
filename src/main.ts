@@ -10,6 +10,7 @@ import {
   renderExperience,
   renderProjects,
   renderAcademic,
+  renderEducation,
   renderSkills,
   renderContact,
   renderFooter,
@@ -27,6 +28,7 @@ app.innerHTML =
   renderExperience(content.experience) +
   renderProjects(content.projects) +
   renderAcademic(content.academic, content.links.github) +
+  renderEducation(content.education) +
   renderSkills(content.skills) +
   renderContact(content.links) +
   renderFooter() +

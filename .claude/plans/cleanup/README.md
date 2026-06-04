@@ -1,80 +1,85 @@
-# sarveshk.dev — Cleaner & Better: the right approach
+# sarveshk.dev — Cleanup & Enhancement Plan
 
-**Status:** the site is shipped and live (https://sarveshk.dev) as a **single static `index.html`** — a deliberate "ship the mockup now" decision. That was the right call for speed, but the current shape has known debt. This folder is the honest plan for making it clean, maintainable, and better.
-
----
-
-## Where things stand (June 2026)
-
-- `index.html` — the entire site: markup + ~400 lines of inline CSS + ~80 lines of inline JS (node-network canvas, scroll-reveal, case-study modals). One file does everything.
-- Build: plain `vite build` → `dist/`, deployed to GitHub Pages on push.
-- Content (experience, projects, skills, case studies) is **hardcoded in HTML/JS**, duplicated between the page and the case-study `CS` object.
-- The old CLI/query-builder app (`src/`, Vitest suite, TS types) was **deleted** in the redesign commit — recoverable from git history if ever wanted.
-- The committed `public/resume/sarvesh-karandikar.pdf` was generated from the *old* CLI "classic view" — its styling no longer matches the new site (content is still correct).
-- `public/demos/` still holds prebaked images from the old design that the new page does **not** reference.
+**Status:** Phase 1 complete. Site is a modular vanilla-TS + Vite app deployed to GitHub Pages.
 
 ---
 
-## The debt, ranked by what actually matters
+## ✅ Done (June 2026)
 
-### 1. Single-file monolith (biggest)
-`index.html` mixes structure, style, behavior, and **data**. It's fine to read once, but every content edit means hand-editing HTML, and the project list is duplicated (cards in HTML, case studies in the `CS` JS object). Risk: they drift out of sync.
-
-### 2. Content is not data
-Adding a job or project = editing markup in two places. There's no single source of truth like the old `resume.ts` had. This is the thing most likely to cause a future "the site says X but my résumé says Y" bug — the exact incoherence we just spent effort fixing.
-
-### 3. Stale assets
-`public/demos/*` (road masks, DCGAN grids, dashboard screenshot) are dead weight now — nothing links to them. They inflate the repo and the deploy artifact.
-
-### 4. PDF mismatch
-The downloadable résumé PDF looks like the old site. It should either be regenerated to match, or be a purpose-built clean résumé doc.
-
-### 5. No verification
-The old app had 25 tests; the static page has none. For a page this simple that's *acceptable*, but there's zero guard against a broken link or a malformed content edit.
+- **Content/presentation separated** — `src/content.ts` is the single source of truth; `render.ts` builds the DOM; CSS extracted to `styles.css`; JS split into modules (`hero-network.ts`, `modal.ts`, `main.ts`). Cards and case studies read from the **same** project objects — drift is impossible.
+- **OG image fixed** — `public/og.png` generated (1200×630@2x, dark-theme branded). No more 404 on social shares. Regeneratable via `npm run generate:og`.
+- **Résumé PDF regenerated** — clean document layout matching site brand, print-friendly. Regeneratable via `npm run generate:pdf`.
+- **Stale assets removed** — `public/demos/` deleted (8 unreferenced images, ~2.7MB).
 
 ---
 
-## Recommended approach (in priority order)
+## 🔴 Next priorities
 
-### Phase 1 — Separate data from presentation *(highest value, low effort)*
-Pull all content into one typed module and render from it:
-```
-src/
-  content.ts        # SINGLE SOURCE OF TRUTH: experience[], projects[], skills, academic[], links
-  render.ts         # builds the DOM sections from content.ts
-  hero-network.ts   # the canvas node-network (isolated)
-  modal.ts          # case-study modal open/close
-  main.ts           # wires it together
-  styles.css        # extracted from the <style> block
-index.html          # thin shell: <div id="app"> + module script
-```
-- One edit point for every fact. Cards and case studies read from the **same** project objects — drift becomes impossible.
-- Keep it framework-free (vanilla TS + Vite) — it's small; React would be overkill.
-- This directly prevents the resume/site incoherence problem from ever recurring.
+### 1. Accurate data & real metrics (biggest impact)
 
-### Phase 2 — Asset hygiene
-- Delete unreferenced `public/demos/*`.
-- Regenerate `sarvesh-karandikar.pdf` to match the new design (or author a dedicated clean résumé). Wire a small script so the PDF can't go stale silently.
-- Generate the real `og.png` social-preview image (the meta tag references `/og.png`, which doesn't exist yet — currently a 404 on social shares).
+The site is structurally solid but the content is still placeholder-quality in places. A senior engineering portfolio lives or dies on specifics.
 
-### Phase 3 — Lightweight verification
-- A tiny build-time check (or a single Playwright smoke test): page renders, all external links resolve, `content.ts` has no empty required fields, the PDF + og.png exist.
-- Add back to CI before the Pages deploy.
+**Experience evidence chips — replace qualitative with quantitative:**
+| Current | Problem | What to ask Sarvesh |
+|---------|---------|-------------------|
+| `SHIPPED` Multimodal deep agents | Vague — what does "shipped" mean? | How many partners onboarded? Latency numbers? Uptime? |
+| `SDK` Claude Agent SDK + MCP | Lists tech, not impact | How many skills/servers registered? Partner adoption? |
+| `SCALE` Self-serve partner platform | No scale numbers | How many partners? Time saved vs manual onboarding? |
+| `BUILT` K8s PKI cert-management | No scope | How many clusters? Cert rotation interval? |
+| `LANG` Java leader-election framework | No context | Uptime improvement? Failover time? |
+| `MULTI-CLOUD` GCP + AWS + Azure ACI | No scale | How many cloud resources managed? Regions? |
+| `IaC` Terraform graph-DB | No scope | Number of resources tracked? |
+| `ML` NER + OCR/MICR fine-tuning | No metrics | Accuracy? Throughput? |
 
-### Phase 4 — Finish the deferred enhancements
-From the brainstorm, two of four enhancements shipped (node-network hero, case-study modals). Still open:
-- **Real metrics** in the experience evidence chips (needs Sarvesh's numbers — e.g. latency cuts, partner-team counts, file-type coverage).
-- **Custom OG image** (Phase 2 above).
-- **Public product links** for the Cisco AI Canvas row (waiting on Sarvesh; placeholders removed for now).
+**Experience bullets — add impact where possible:**
+- "Built multimodal Canvas Deep Agent" → add: served X partners, handles Y requests/day
+- "Designed a secure file pipeline" → add: latency, file types supported, SSRF prevention stats
+- "Own the Knowledge-Base SDK" → add: number of skills, partner onboarding time reduction
+- "Integrated GCP into ACI" → add: number of cloud resources, regions, customers
+
+### 2. Add actual Cisco product links
+
+The cleanup plan flagged this but it's still open. For each Cisco role, we need:
+- **AI Canvas** — public product page, docs, or blog post (if any exist)
+- **Nexus Dashboard** — product page (likely public: cisco.com nexus dashboard)
+- **Cloud Network Controller** — ACI/cloud networking product page
+
+These add credibility — "I worked on this → here's the product." Even a generic Cisco product page is better than nothing.
+
+### 3. WordPress role — needs proper representation
+
+Sarvesh mentioned WordPress developer work should have more emphasis than Circle Link fintech. Currently the "Earlier" entry bundles everything into one card. This should be split out and detailed:
+- Role, company, dates
+- What was built (sites, plugins, themes)
+- Tech stack (WordPress, PHP, JS, MySQL, etc.)
+- Any metrics (traffic, sites delivered, clients)
+
+### 4. Add Education section to the site
+
+The site has an "Academic & ML" section with projects but **no actual education section** (degrees, universities, years). The résumé PDF includes:
+- USC — MS, Computer Science (2020)
+- SRM — BTech, Computer Science & Engineering (2019)
+
+This should be on the site too. It's a basic credibility signal that recruiters look for immediately.
+
+### 5. Resume ↔ Site coherence
+
+Now that content.ts is the single source of truth for the site, the PDF should ideally be generated from it too. Currently `scripts/generate-pdf.ts` has its own hardcoded HTML with duplicated content. When Sarvesh updates content.ts, the PDF won't automatically update.
+
+**Fix:** Have the PDF script import from `src/content.ts` and render from the same data.
+
+---
+
+## 🟡 Nice to have
+
+- **Verification in CI** — a build-time check: all external links resolve, no empty required fields, og.png + PDF exist. The stale OG image bug would've been caught by this.
+- **Custom OG image per page** — currently one generic OG image. Could generate role-specific ones.
+- **Dark/light mode toggle** — site is dark-only. Some recruiters prefer light mode for readability.
 
 ---
 
 ## What NOT to do
 - Don't reintroduce a framework or build complexity the content doesn't justify.
 - Don't re-add the CLI/query-builder concept — it was explicitly rejected.
-- Don't fabricate metrics or links to fill the gaps; leave them qualitative until real data exists.
-
----
-
-## Suggested next session
-Run Phase 1 as its own brainstorm → spec → plan cycle (it's a clean refactor with a clear interface). Phases 2–3 can ride along. Phase 4 unblocks as Sarvesh provides metrics/links.
+- Don't fabricate metrics or links — leave them qualitative until Sarvesh provides real data.
+- Don't add the WordPress role content until Sarvesh provides the specifics.

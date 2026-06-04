@@ -4,7 +4,7 @@
 // just template literals.
 // ============================================================
 
-import type { Experience, Project, AcademicProject, SkillCategory, SiteLinks } from "./content";
+import type { Experience, Project, AcademicProject, Education, SkillCategory, SiteLinks } from "./content";
 
 // ---- Helpers ----
 
@@ -30,6 +30,7 @@ export function renderNav(links: SiteLinks): string {
       <a href="#exp">Experience</a>
       <a href="#proj">Projects</a>
       <a href="#acad">Academic</a>
+      <a href="#edu">Education</a>
       <a href="#skills">Skills</a>
     </div>
     <a href="${esc(links.resume)}" class="cta" download>Résumé ↓</a>
@@ -159,6 +160,31 @@ export function renderAcademic(academic: AcademicProject[], githubUrl: string): 
   </section>`;
 }
 
+// ---- Education ----
+
+export function renderEducation(education: Education[]): string {
+  const rows = education
+    .map(
+      (edu) => `
+    <div class="edurow">
+      <div class="edusch">${esc(edu.school)}</div>
+      <div class="edudeg">${esc(edu.degree)}</div>
+      <div class="eduyr">${esc(edu.year)}</div>
+    </div>`
+    )
+    .join("");
+
+  return `
+  <section class="edu" id="edu">
+    <div class="wrap reveal">
+      <div class="label">04 — Education</div>
+      <h2>The academic foundation</h2>
+      <p class="section-lead">Degrees that grounded the engineering and ML work above.</p>
+      <div class="edulist">${rows}</div>
+    </div>
+  </section>`;
+}
+
 // ---- Skills ----
 
 export function renderSkills(skills: SkillCategory[]): string {
@@ -184,7 +210,7 @@ export function renderSkills(skills: SkillCategory[]): string {
   return `
   <section class="skills" id="skills">
     <div class="wrap reveal">
-      <div class="label">04 — Toolkit</div>
+      <div class="label">05 — Toolkit</div>
       <h2>Fluent in both worlds</h2>
       <p class="section-lead">The whole point: a stack that spans infrastructure AND AI — that's what full-stack-AI means here.</p>
       <div class="skillmap">${cols}</div>

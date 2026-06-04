@@ -12,7 +12,7 @@ export interface Evidence {
 
 export interface Experience {
   id: string;
-  className: "ai" | "infra";
+  className: "ai" | "infra" | "web";
   role: string;
   period: string;
   company: string;
@@ -45,6 +45,12 @@ export interface AcademicProject {
   tech: string;
 }
 
+export interface Education {
+  school: string;
+  degree: string;
+  year: string;
+}
+
 export interface SkillGroup {
   heading: string;
   items: string[];
@@ -68,6 +74,7 @@ export interface SiteContent {
   experience: Experience[];
   projects: Project[];
   academic: AcademicProject[];
+  education: Education[];
   skills: SkillCategory[];
   links: SiteLinks;
 }
@@ -87,10 +94,14 @@ export const content: SiteContent = {
       role: "Senior Software Engineer — AI Canvas",
       period: "Oct 2025 — present",
       company: "Cisco Systems",
+      productLink: {
+        text: "AI Canvas",
+        href: "https://blogs.cisco.com/ai/ai-canvas-controlled-availability",
+      },
       evidence: [
-        { key: "SHIPPED", text: "Multimodal deep agents" },
-        { key: "SDK", text: "Claude Agent SDK + MCP" },
-        { key: "SCALE", text: "Self-serve partner platform" },
+        { key: "SHIPPED", text: "Multimodal deep agents — vision, docs, network captures" },
+        { key: "PLATFORM", text: "Self-serve partner SDK + MCP server registration" },
+        { key: "PIPELINE", text: "gRPC → S3 streaming file pipeline, SSRF-guarded" },
       ],
       bullets: [
         "Built multimodal Canvas Deep Agent — reasons over images, documents, and network captures across fast and plan-execute modes.",
@@ -105,9 +116,14 @@ export const content: SiteContent = {
       role: "Software Engineer — Nexus Dashboard",
       period: "Nov 2023 — Sep 2025",
       company: "Cisco Systems",
+      productLink: {
+        text: "Nexus Dashboard",
+        href: "https://www.cisco.com/c/en/us/products/data-center-analytics/nexus-dashboard/index.html",
+      },
       evidence: [
-        { key: "BUILT", text: "K8s PKI cert-management" },
-        { key: "LANG", text: "Java leader-election framework" },
+        { key: "BUILT", text: "K8s PKI certificate management system" },
+        { key: "SHIPPED", text: "Java leader-election framework (SPI-based)" },
+        { key: "INTEGRATED", text: "External CA onboarding for XE/XR devices" },
       ],
       bullets: [
         "Designed a Certificate Management System for automated CA creation and secure signing across Kubernetes communications.",
@@ -122,10 +138,14 @@ export const content: SiteContent = {
       role: "Software Engineer — Cloud Network Controller",
       period: "Jul 2020 — Oct 2023",
       company: "Cisco Systems",
+      productLink: {
+        text: "Cloud Network Controller",
+        href: "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/cloud-network-controller.html",
+      },
       evidence: [
-        { key: "MULTI-CLOUD", text: "GCP + AWS + Azure ACI" },
-        { key: "SECURITY", text: "L4–L7 drift detection" },
-        { key: "IaC", text: "Terraform graph-DB" },
+        { key: "MULTI-CLOUD", text: "GCP integration + AWS + Azure ACI" },
+        { key: "SECURITY", text: "L4–L7 config-drift detection engine" },
+        { key: "IaC", text: "Terraform resource collection → graph DB" },
       ],
       bullets: [
         "Integrated GCP into the ACI model-based cloud-networking solution for multi-cloud compatibility and scale.",
@@ -135,18 +155,35 @@ export const content: SiteContent = {
       chips: ["Python", "Terraform", "GCP", "AWS", "Azure", "Dgraph"],
     },
     {
-      id: "earlier",
-      className: "infra",
-      role: "Earlier — USC Supply Chain · Circle Link (fintech)",
+      id: "wordpress",
+      className: "web",
+      role: "WordPress Developer",
       period: "2019 — 2020",
-      company: "Web Developer · ML Engineer Intern",
+      company: "USC Supply Chain",
       evidence: [
-        { key: "ML", text: "NER + OCR/MICR fine-tuning" },
+        { key: "BUILT", text: "Custom themes, plugins, and client sites" },
+        { key: "STACK", text: "PHP · JavaScript · MySQL · REST APIs" },
+      ],
+      bullets: [
+        "Developed and maintained WordPress sites with custom themes and plugins for university supply-chain projects.",
+        "Built REST API integrations connecting WordPress to backend inventory and logistics systems.",
+        "Managed hosting, deployments, and performance optimization across multiple client sites.",
+      ],
+      chips: ["WordPress", "PHP", "JavaScript", "MySQL", "REST APIs"],
+    },
+    {
+      id: "circlelink",
+      className: "infra",
+      role: "ML Engineer Intern",
+      period: "2019 — 2020",
+      company: "Circle Link (fintech)",
+      evidence: [
+        { key: "ML", text: "NER + OCR/MICR fine-tuning for loan documents" },
       ],
       bullets: [
         "Built NER models classifying entities in loan documents with Elasticsearch indexing; fine-tuned OCR/MICR check recognition.",
       ],
-      chips: ["Python", "NLP", "Elasticsearch"],
+      chips: ["Python", "NLP", "Elasticsearch", "OCR"],
     },
   ],
 
@@ -234,6 +271,19 @@ export const content: SiteContent = {
       name: "Offspring Face GAN",
       description: "Conditional face generation",
       tech: "TensorFlow",
+    },
+  ],
+
+  education: [
+    {
+      school: "University of Southern California",
+      degree: "MS, Computer Science",
+      year: "2020",
+    },
+    {
+      school: "SRM Institute of Science and Technology",
+      degree: "BTech, Computer Science & Engineering",
+      year: "2019",
     },
   ],
 

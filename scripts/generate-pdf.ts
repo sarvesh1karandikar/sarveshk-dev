@@ -334,12 +334,23 @@ const RESUME_HTML = `<!doctype html>
     </div>
 
     <div class="exp-item">
-      <div class="row"><span class="role">ML Engineer / Web Developer Intern</span><span class="period">2019 — 2020</span></div>
-      <div class="co">USC Supply Chain · Circle Link (fintech)</div>
+      <div class="row"><span class="role">WordPress Developer</span><span class="period">2019 — 2020</span></div>
+      <div class="co">USC Supply Chain</div>
+      <ul>
+        <li>Developed and maintained WordPress sites with custom themes and plugins for university supply-chain projects.</li>
+        <li>Built REST API integrations connecting WordPress to backend inventory and logistics systems.</li>
+        <li>Managed hosting, deployments, and performance optimization across multiple client sites.</li>
+      </ul>
+      <div class="tags"><span class="tag">WordPress</span><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">MySQL</span><span class="tag">REST APIs</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="row"><span class="role">ML Engineer Intern</span><span class="period">2019 — 2020</span></div>
+      <div class="co">Circle Link (fintech)</div>
       <ul>
         <li>Built NER models classifying entities in loan documents with Elasticsearch indexing; fine-tuned OCR/MICR check recognition.</li>
       </ul>
-      <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Elasticsearch</span></div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Elasticsearch</span><span class="tag">OCR</span></div>
     </div>
   </div>
 
