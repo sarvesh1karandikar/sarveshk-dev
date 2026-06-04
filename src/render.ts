@@ -46,8 +46,8 @@ export function renderHero(links: SiteLinks): string {
     <div class="glow"></div>
     <div class="in">
       <span class="badge"><span class="dot"></span>Senior Software Engineer · Cisco</span>
-      <h1 class="big">Sarvesh Karandikar.<br>Backend &amp; infra engineer,<br>now building <span class="g">AI — full-stack</span>.</h1>
-      <p class="lead">I spent five years engineering backend, cloud, and security infrastructure at Cisco — then carried that rigor into AI. Today I ship agentic systems end to end: the models, the platform, and the tooling.</p>
+      <h1 class="big">Sarvesh Karandikar.<br>Infrastructure built the foundation.<br>AI made the <span class="g">full-stack agentic</span> leap.</h1>
+      <p class="lead">Senior Software Engineer at Cisco. Infrastructure taught me rigor. Now I build full-stack agentic AI — multimodal agents, developer platforms, and the tooling that ships LLMs to production.</p>
       <div class="arc">
         <div class="step s1"><div class="yr">2019 — 2023</div><div class="nm">Backend + Infra</div></div>
         <div class="step s2"><div class="yr">2023 — 2025</div><div class="nm">Platform + Security</div></div>

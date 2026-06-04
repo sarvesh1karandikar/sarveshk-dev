@@ -142,7 +142,7 @@ const OG_HTML = `<!doctype html>
   <div class="card">
     <div class="badge"><span class="dot"></span> Senior Software Engineer · Cisco</div>
     <h1>Sarvesh <span class="g">Karandikar</span></h1>
-    <p class="sub">Backend &amp; infra engineer, now building AI — full-stack</p>
+    <p class="sub">Infrastructure built the foundation. AI made the full-stack agentic leap.</p>
     <div class="tags">
       <span class="tag">Agentic Systems</span>
       <span class="tag">Claude Agent SDK</span>
