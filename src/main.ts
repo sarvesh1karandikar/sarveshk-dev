@@ -25,10 +25,10 @@ const app = document.getElementById("app")!;
 app.innerHTML =
   renderNav(content.links) +
   renderHero(content.links) +
+  renderEducation(content.education) +
   renderExperience(content.experience) +
   renderProjects(content.projects) +
   renderAcademic(content.academic, content.links.github) +
-  renderEducation(content.education) +
   renderSkills(content.skills) +
   renderContact(content.links) +
   renderFooter() +

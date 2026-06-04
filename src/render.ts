@@ -27,10 +27,10 @@ export function renderNav(links: SiteLinks): string {
   <div class="nav">
     <span class="logo">sarvesh<span class="d">k</span>.dev</span>
     <div class="links">
+      <a href="#edu">Education</a>
       <a href="#exp">Experience</a>
       <a href="#proj">Projects</a>
       <a href="#acad">Academic</a>
-      <a href="#edu">Education</a>
       <a href="#skills">Skills</a>
     </div>
     <a href="${esc(links.resume)}" class="cta" download>Résumé ↓</a>
@@ -94,7 +94,7 @@ export function renderExperience(experiences: Experience[]): string {
   return `
   <section class="exp" id="exp">
     <div class="wrap reveal">
-      <div class="label">01 — Experience</div>
+      <div class="label">02 — Experience</div>
       <h2>The throughline</h2>
       <p class="section-lead">Each role built on the last — infrastructure rigor, then platform scale, then AI. The spine runs blue → violet → teal.</p>
       <div class="timeline">${jobs}</div>
@@ -126,7 +126,7 @@ export function renderProjects(projects: Project[]): string {
   return `
   <section class="proj" id="proj">
     <div class="wrap reveal">
-      <div class="label">02 — Projects</div>
+      <div class="label">03 — Projects</div>
       <h2>Full-stack proof — built &amp; shipped solo</h2>
       <p class="section-lead">Things I designed and shipped myself, AI work first. Click any card for the case study.</p>
       <div class="cards">${cards}</div>
@@ -151,7 +151,7 @@ export function renderAcademic(academic: AcademicProject[], githubUrl: string): 
   return `
   <section class="acad" id="acad">
     <div class="wrap reveal">
-      <div class="label">03 — Academic &amp; ML</div>
+      <div class="label">04 — Academic &amp; ML</div>
       <h2>Where the AI foundation started</h2>
       <p class="section-lead">USC &amp; SRM coursework and research — the ML groundwork that made the pivot natural.</p>
       <div class="mini">${cards}</div>
@@ -177,7 +177,7 @@ export function renderEducation(education: Education[]): string {
   return `
   <section class="edu" id="edu">
     <div class="wrap reveal">
-      <div class="label">04 — Education</div>
+      <div class="label">01 — Education</div>
       <h2>The academic foundation</h2>
       <p class="section-lead">Degrees that grounded the engineering and ML work above.</p>
       <div class="edulist">${rows}</div>
