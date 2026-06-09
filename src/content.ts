@@ -34,7 +34,7 @@ export interface Project {
   githubUrl: string;
   title: string;
   description: string;
-  demoLabel?: string;
+  live?: boolean;
   caseStudy: CaseStudy;
   chips: string[];
 }
@@ -194,7 +194,8 @@ export const content: SiteContent = {
       githubUrl: "https://github.com/sarvesh1karandikar/alpacabot-dashboard",
       title: "AlpacaBot",
       description:
-        "Weekly-options trading agent — Alpaca execution, Telegram control, terminal dashboard, AWS-hosted.",
+        "Weekly-options trading agent with Alpaca execution, Telegram control, and a terminal dashboard — running on AWS.",
+      live: true,
       chips: ["Python", "AWS", "LLM", "Telegram"],
       caseStudy: {
         problem:
@@ -228,7 +229,8 @@ export const content: SiteContent = {
       githubUrl: "https://github.com/sarvesh1karandikar/DriveSuite",
       title: "DriveSuite",
       description:
-        "WhatsApp → Jellyfin/Sonarr media bridge — local Llama for intent, Claude for execution.",
+        "WhatsApp → Jellyfin/Sonarr media bridge — local Llama for intent parsing, Claude for complex reasoning.",
+      live: true,
       chips: ["Node.js", "Docker", "Ollama", "Claude"],
       caseStudy: {
         problem:

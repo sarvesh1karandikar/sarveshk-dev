@@ -14,10 +14,8 @@ import {
   renderSkills,
   renderContact,
   renderFooter,
-  renderModalShell,
 } from "./render";
 import { initHeroNetwork } from "./hero-network";
-import { initModal } from "./modal";
 
 // ---- Bootstrap the page ----
 
@@ -31,8 +29,7 @@ app.innerHTML =
   renderAcademic(content.academic, content.links.github) +
   renderSkills(content.skills) +
   renderContact(content.links) +
-  renderFooter() +
-  renderModalShell();
+  renderFooter();
 
 // ---- Scroll reveal ----
 
@@ -49,20 +46,9 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-// ---- Card cursor glow ----
-
-document.querySelectorAll<HTMLElement>(".card").forEach((c) => {
-  c.addEventListener("mousemove", (e) => {
-    const r = c.getBoundingClientRect();
-    c.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    c.style.setProperty("--my", `${e.clientY - r.top}px`);
-  });
-});
-
 // ---- Init animations & interactions ----
 
 initHeroNetwork();
-initModal();
 
 // ---- Active nav highlighting ----
 
@@ -73,8 +59,6 @@ const sections = [
   { id: "acad", link: 'a[href="#acad"]' },
   { id: "skills", link: 'a[href="#skills"]' },
 ];
-
-const navLinks = document.querySelectorAll(".nav .links a");
 
 const navIo = new IntersectionObserver(
   (entries) => {

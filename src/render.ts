@@ -108,17 +108,36 @@ export function renderProjects(projects: Project[]): string {
   const cards = projects
     .map(
       (p) => `
-    <div class="card" data-project="${esc(p.id)}">
-      <div class="top">
-        <div class="ico">${esc(p.icon)}</div>
-        <a href="${esc(p.githubUrl)}" class="src" target="_blank" rel="noopener" onclick="event.stopPropagation()">GitHub ↗</a>
+    <div class="projcard">
+      <div class="projcard-header">
+        <div class="projcard-title">
+          <span class="projcard-icon">${esc(p.icon)}</span>
+          <h3>${esc(p.title)}</h3>
+          ${p.live ? '<span class="projcard-live"><span class="projcard-live-dot"></span>Live</span>' : ""}
+        </div>
+        <a href="${esc(p.githubUrl)}" class="projcard-gh" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
-      <h3>
-        ${esc(p.title)}
-        ${p.demoLabel ? `<span class="demo">${esc(p.demoLabel)}</span>` : ""}
-      </h3>
-      <p>${esc(p.description)}</p>
-      <div class="open">View case study →</div>
+
+      <p class="projcard-desc">${esc(p.description)}</p>
+
+      <div class="projcard-body">
+        <div class="projcard-section">
+          <div class="projcard-section-label">Problem</div>
+          <p>${esc(p.caseStudy.problem)}</p>
+        </div>
+        <div class="projcard-section">
+          <div class="projcard-section-label">Approach</div>
+          <p>${esc(p.caseStudy.approach)}</p>
+        </div>
+        <div class="projcard-section">
+          <div class="projcard-section-label">Outcome</div>
+          <p>${esc(p.caseStudy.outcome)}</p>
+        </div>
+      </div>
+
+      <div class="projcard-tags">
+        ${chipsHtml(p.chips)}
+      </div>
     </div>`
     )
     .join("");
@@ -128,8 +147,8 @@ export function renderProjects(projects: Project[]): string {
     <div class="wrap reveal">
       <div class="label">03 — Projects</div>
       <h2>Full-stack proof — built &amp; shipped solo</h2>
-      <p class="section-lead">Things I designed and shipped myself, AI work first. Click any card for the case study.</p>
-      <div class="cards">${cards}</div>
+      <p class="section-lead">Things I designed and shipped myself, AI work first.</p>
+      <div class="projlist">${cards}</div>
     </div>
   </section>`;
 }
@@ -240,36 +259,4 @@ export function renderContact(links: SiteLinks): string {
 
 export function renderFooter(): string {
   return `<footer>© 2026 Sarvesh Karandikar · resume.sarveshk.dev</footer>`;
-}
-
-// ---- Case-study modal shell ----
-
-export function renderModalShell(): string {
-  return `
-  <div class="overlay" id="ov">
-    <div class="modal">
-      <div class="banner">
-        <span class="x" id="cs-close">✕</span>
-        <h3 id="cs-title">Project</h3>
-      </div>
-      <div class="body">
-        <div class="meta chips" id="cs-chips"></div>
-        <div class="cs">
-          <div class="h">The problem</div>
-          <p id="cs-prob"></p>
-        </div>
-        <div class="cs">
-          <div class="h">My approach</div>
-          <p id="cs-appr"></p>
-        </div>
-        <div class="cs">
-          <div class="h">Outcome</div>
-          <p id="cs-out"></p>
-        </div>
-        <div class="actions">
-          <a class="gh" id="cs-gh" target="_blank" rel="noopener">View on GitHub ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>`;
 }
