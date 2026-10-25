@@ -24,40 +24,41 @@ function chipsHtml(items: string[]): string {
 
 export function renderNav(links: SiteLinks): string {
   return `
-  <div class="nav">
-    <span class="logo">sarvesh<span class="d">k</span>.dev</span>
-    <div class="links">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header nav wrap">
+    <a class="wordmark" href="https://sarveshk.dev">Sarvesh Karandikar<span aria-hidden="true">.</span></a>
+    <nav class="links" aria-label="Résumé navigation">
       <a href="#edu">Education</a>
       <a href="#exp">Experience</a>
       <a href="#proj">Projects</a>
       <a href="#acad">Academic</a>
       <a href="#skills">Skills</a>
-    </div>
-    <a href="${esc(links.resume)}" class="cta" download>Résumé ↓</a>
-  </div>`;
+      <a href="${esc(links.resume)}" class="resume-link" download>PDF résumé <span aria-hidden="true">↓</span></a>
+    </nav>
+  </header>`;
 }
 
 // ---- Hero ----
 
 export function renderHero(links: SiteLinks): string {
   return `
-  <header class="hero">
-    <canvas id="net"></canvas>
-    <div class="glow"></div>
-    <div class="in">
-      <span class="badge"><span class="dot"></span>Senior Software Engineer · Cisco</span>
-      <h1 class="big">Sarvesh Karandikar.<br>Infrastructure built the foundation.<br>AI made the <span class="g">full-stack agentic</span> leap.</h1>
-      <p class="lead">Senior Software Engineer at Cisco. Infrastructure taught me rigor. Now I build full-stack agentic AI — multimodal agents, developer platforms, and the tooling that ships LLMs to production.</p>
-      <div class="arc">
-        <div class="step s1"><div class="yr">2019 — 2023</div><div class="nm">Backend + Infra</div></div>
-        <div class="step s2"><div class="yr">2023 — 2025</div><div class="nm">Platform + Security</div></div>
-        <div class="step s3"><div class="yr">2025 — now</div><div class="nm">Full-stack AI</div></div>
-      </div>
+  <header class="hero wrap" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Curriculum vitae / Cisco Systems</p>
+      <h1 class="big">Infrastructure roots.<br><em>Agentic AI</em> in practice.</h1>
+      <p class="lead">Senior Software Engineer at Cisco. My work spans infrastructure, multimodal agents, developer platforms, and the tooling behind AI applications.</p>
       <div class="row">
-        <a href="#exp" class="b1">See the proof →</a>
-        <a href="${esc(links.resume)}" class="b2" download>Résumé</a>
+        <a href="#exp" class="b1">Explore my experience <span aria-hidden="true">↓</span></a>
+        <a href="${esc(links.resume)}" class="b2" download>Download résumé <span aria-hidden="true">↓</span></a>
       </div>
     </div>
+    <aside class="career-note" aria-label="Career progression">
+      <p class="eyebrow">The throughline</p>
+      <div class="step"><p class="yr">2019 — 2023</p><p class="nm">Backend &amp; infrastructure</p></div>
+      <div class="step"><p class="yr">2023 — 2025</p><p class="nm">Platform &amp; security</p></div>
+      <div class="step"><p class="yr">2025 — now</p><p class="nm">Agentic AI</p></div>
+      <a href="https://sarveshk.dev" class="portfolio-link">Selected engineering work <span aria-hidden="true">↗</span></a>
+    </aside>
   </header>`;
 }
 
@@ -70,7 +71,7 @@ export function renderExperience(experiences: Experience[]): string {
     <div class="job ${exp.className}">
       <div class="jobcard">
         <div class="head">
-          <span class="role">${esc(exp.role)}</span>
+          <h3 class="role">${esc(exp.role)}</h3>
           <span class="when">${esc(exp.period)}</span>
         </div>
         <div class="co">
@@ -96,7 +97,7 @@ export function renderExperience(experiences: Experience[]): string {
     <div class="wrap reveal">
       <div class="label">02 — Experience</div>
       <h2>The throughline</h2>
-      <p class="section-lead">Each role built on the last — infrastructure rigor, then platform scale, then AI. The spine runs blue → violet → teal.</p>
+      <p class="section-lead">Each role built on the last: infrastructure, platform engineering, then AI. Selected contributions within the teams I worked with.</p>
       <div class="timeline">${jobs}</div>
     </div>
   </section>`;
@@ -160,7 +161,7 @@ export function renderAcademic(academic: AcademicProject[], githubUrl: string): 
     .map(
       (a) => `
     <div class="minicard">
-      <div class="n">${esc(a.name)}</div>
+      <h3 class="n">${esc(a.name)}</h3>
       <div class="d">${esc(a.description)}</div>
       <div class="t">${esc(a.tech)}</div>
     </div>`
@@ -186,7 +187,7 @@ export function renderEducation(education: Education[]): string {
     .map(
       (edu) => `
     <div class="edurow">
-      <div class="edusch">${esc(edu.school)}</div>
+      <h3 class="edusch">${esc(edu.school)}</h3>
       <div class="edudeg">${esc(edu.degree)}</div>
       <div class="eduyr">${esc(edu.year)}</div>
     </div>`
@@ -211,7 +212,7 @@ export function renderSkills(skills: SkillCategory[]): string {
     .map(
       (cat) => `
     <div class="skillcol ${cat.className}">
-      <div class="world">${esc(cat.world)}</div>
+      <h3 class="world">${esc(cat.world)}</h3>
       <div class="wsub">${esc(cat.sub)}</div>
       ${cat.groups
         .map(
@@ -245,7 +246,7 @@ export function renderContact(links: SiteLinks): string {
   <section class="contact" id="contact">
     <div class="wrap reveal">
       <div class="label">Get in touch</div>
-      <h2>Let's build something <span class="g">solid</span>.</h2>
+      <h2>Let’s talk systems.</h2>
       <div class="row">
         <a href="mailto:${esc(links.email)}" class="b1">${esc(links.email)}</a>
         <a href="${esc(links.linkedin)}" class="b2" target="_blank" rel="noopener">LinkedIn</a>
@@ -258,5 +259,5 @@ export function renderContact(links: SiteLinks): string {
 // ---- Footer ----
 
 export function renderFooter(): string {
-  return `<footer>© 2026 Sarvesh Karandikar · resume.sarveshk.dev</footer>`;
+  return `<footer class="site-footer wrap"><p>© 2026 Sarvesh Karandikar</p><p>Built with care. Kept simple.</p><a href="https://sarveshk.dev">Portfolio ↗</a><a href="#top">Back to top ↑</a></footer>`;
 }
