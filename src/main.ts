@@ -15,13 +15,13 @@ import {
   renderContact,
   renderFooter,
 } from "./render";
-import { initHeroNetwork } from "./hero-network";
 
 // ---- Bootstrap the page ----
 
 const app = document.getElementById("app")!;
 app.innerHTML =
   renderNav(content.links) +
+  '<main id="main" tabindex="-1">' +
   renderHero(content.links) +
   renderEducation(content.education) +
   renderExperience(content.experience) +
@@ -29,26 +29,8 @@ app.innerHTML =
   renderAcademic(content.academic, content.links.github) +
   renderSkills(content.skills) +
   renderContact(content.links) +
+  '</main>' +
   renderFooter();
-
-// ---- Scroll reveal ----
-
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("in");
-        io.unobserve(e.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-// ---- Init animations & interactions ----
-
-initHeroNetwork();
 
 // ---- Active nav highlighting ----
 
