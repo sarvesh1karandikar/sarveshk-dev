@@ -34,7 +34,7 @@ export interface Project {
   githubUrl: string;
   title: string;
   description: string;
-  live?: boolean;
+  status?: string;
   caseStudy: CaseStudy;
   chips: string[];
 }
@@ -192,35 +192,36 @@ export const content: SiteContent = {
       id: "alpaca",
       icon: "▣",
       githubUrl: "https://github.com/sarvesh1karandikar/alpacabot-dashboard",
-      title: "AlpacaBot",
+      title: "AlpacaBot Dashboard",
       description:
-        "Weekly-options trading agent with Alpaca execution, Telegram control, and a terminal dashboard — running on AWS.",
-      live: true,
-      chips: ["Python", "AWS", "LLM", "Telegram"],
+        "A terminal-style dashboard for an AlpacaBot trading-agent project, exploring monitoring and control.",
+      status: "Implemented",
+      chips: ["HTML", "JavaScript", "Dashboard"],
       caseStudy: {
         problem:
-          "I wanted an automated weekly-options strategy I could monitor and control from my phone — without babysitting a terminal.",
+          "Make a trading-agent project easier to monitor through a browser interface.",
         approach:
-          "Built a trading agent that executes via the Alpaca API on a schedule, with an LLM layer for decision support, a Telegram bot for control, and a terminal-style dashboard for live monitoring — all running on AWS.",
+          "Built a terminal-style dashboard that requests data from the agent backend. The public repository contains the dashboard interface.",
         outcome:
-          "Runs autonomously on EC2; controlled entirely over Telegram with positions and PnL visible on the dashboard in real time.",
+          "The interface provides a monitoring surface for the agent project. Backend availability is separate from the public dashboard source.",
       },
     },
     {
       id: "chroma",
       icon: "⬡",
       githubUrl: "https://github.com/sarvesh1karandikar/chromadb",
-      title: "chromadb RAG",
+      title: "ChromaDB Retrieval",
+      status: "Prototype",
       description:
-        "FastAPI ingest + semantic retrieval with centroid-based collection routing.",
+        "A document ingestion and retrieval prototype with centroid-based collection routing.",
       chips: ["FastAPI", "RAG", "ChromaDB", "PyTorch"],
       caseStudy: {
         problem:
-          "RAG systems get slow and noisy as document collections grow and topics drift apart.",
+          "Explore how to organize documents by topic and select relevant collections for retrieval.",
         approach:
-          "A FastAPI ingest + retrieval backend that chunks and embeds documents, then routes queries using centroid-based collection clustering so each query only searches the most relevant cluster.",
+          "A FastAPI backend extracts, chunks, and embeds documents, then compares query embeddings with collection centroids to select collections and retrieve text chunks.",
         outcome:
-          "Cleaner retrieval and faster queries at scale; model-agnostic so it plugs into any LLM endpoint.",
+          "Implemented upload and search endpoints returning text chunks for downstream LLM context. Retrieval quality and latency improvements have not been benchmarked.",
       },
     },
     {
@@ -229,16 +230,16 @@ export const content: SiteContent = {
       githubUrl: "https://github.com/sarvesh1karandikar/DriveSuite",
       title: "DriveSuite",
       description:
-        "WhatsApp → Jellyfin/Sonarr media bridge — local Llama for intent parsing, Claude for complex reasoning.",
-      live: true,
-      chips: ["Node.js", "Docker", "Ollama", "Claude"],
+        "A home-media assistant system in development: an earlier WhatsApp bridge, a newer Telegram agent, and service integrations.",
+      status: "In development",
+      chips: ["Python", "Node.js", "SQLite", "Docker"],
       caseStudy: {
         problem:
-          "I wanted to manage my home media server (Jellyfin/Sonarr/Radarr) by just texting it on WhatsApp.",
+          "Make a collection of home-media services easier to search and control through a conversational interface.",
         approach:
-          "A Node bridge connecting the WhatsApp Cloud API to the media stack, with smart model routing — local Llama 3.1 for cheap intent parsing, Claude for the calls that need real reasoning — all Docker-orchestrated.",
+          "Built an earlier WhatsApp bridge and a newer Telegram agent, alongside service wrappers, infrastructure configuration, and architecture documentation.",
         outcome:
-          '"Add Breaking Bad" over WhatsApp queues the download and reports status. Cost-efficient by keeping routine parsing local.',
+          "Direct HTTP integrations and an MCP client scaffold are present. MCP discovery remains a stub, and the confirmed-action flow still needs end-to-end completion.",
       },
     },
   ],
@@ -292,7 +293,7 @@ export const content: SiteContent = {
   skills: [
     {
       world: "⬡ Backend & Infrastructure",
-      sub: "The foundation — 5 years deep",
+      sub: "Cloud networking and platform engineering",
       className: "infra",
       groups: [
         {

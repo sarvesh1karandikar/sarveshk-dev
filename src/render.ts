@@ -26,7 +26,7 @@ export function renderNav(links: SiteLinks): string {
   return `
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header nav wrap">
-    <a class="wordmark" href="https://sarveshk.dev">Sarvesh Karandikar<span aria-hidden="true">.</span></a>
+    <a class="wordmark" href="/">Sarvesh Karandikar<span aria-hidden="true">.</span></a>
     <nav class="links" aria-label="Résumé navigation">
       <a href="#edu">Education</a>
       <a href="#exp">Experience</a>
@@ -54,10 +54,10 @@ export function renderHero(links: SiteLinks): string {
     </div>
     <aside class="career-note" aria-label="Career progression">
       <p class="eyebrow">The throughline</p>
-      <div class="step"><p class="yr">2019 — 2023</p><p class="nm">Backend &amp; infrastructure</p></div>
+      <div class="step"><p class="yr">2020 — 2023</p><p class="nm">Backend &amp; infrastructure</p></div>
       <div class="step"><p class="yr">2023 — 2025</p><p class="nm">Platform &amp; security</p></div>
       <div class="step"><p class="yr">2025 — now</p><p class="nm">Agentic AI</p></div>
-      <a href="https://sarveshk.dev" class="portfolio-link">Selected engineering work <span aria-hidden="true">↗</span></a>
+      <a href="/" class="portfolio-link">Selected engineering work <span aria-hidden="true">↗</span></a>
     </aside>
   </header>`;
 }
@@ -114,7 +114,7 @@ export function renderProjects(projects: Project[]): string {
         <div class="projcard-title">
           <span class="projcard-icon">${esc(p.icon)}</span>
           <h3>${esc(p.title)}</h3>
-          ${p.live ? '<span class="projcard-live"><span class="projcard-live-dot"></span>Live</span>' : ""}
+          ${p.status ? `<span class="projcard-live">${esc(p.status)}</span>` : ""}
         </div>
         <a href="${esc(p.githubUrl)}" class="projcard-gh" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
@@ -147,8 +147,8 @@ export function renderProjects(projects: Project[]): string {
   <section class="proj" id="proj">
     <div class="wrap reveal">
       <div class="label">03 — Projects</div>
-      <h2>Full-stack proof — built &amp; shipped solo</h2>
-      <p class="section-lead">Things I designed and shipped myself, AI work first.</p>
+      <h2>Independent engineering projects</h2>
+      <p class="section-lead">Implemented tools and evolving prototypes, with their current scope made explicit. <a href="/projects/">Explore all project stories</a>.</p>
       <div class="projlist">${cards}</div>
     </div>
   </section>`;
@@ -232,7 +232,7 @@ export function renderSkills(skills: SkillCategory[]): string {
     <div class="wrap reveal">
       <div class="label">05 — Toolkit</div>
       <h2>Fluent in both worlds</h2>
-      <p class="section-lead">The whole point: a stack that spans infrastructure AND AI — that's what full-stack-AI means here.</p>
+      <p class="section-lead">The languages and tools I use across infrastructure, agent systems, and applied machine learning.</p>
       <div class="skillmap">${cols}</div>
       <p class="bridge">Python · gRPC · AWS — the bridge that ties both worlds together.</p>
     </div>
@@ -259,5 +259,5 @@ export function renderContact(links: SiteLinks): string {
 // ---- Footer ----
 
 export function renderFooter(): string {
-  return `<footer class="site-footer wrap"><p>© 2026 Sarvesh Karandikar</p><p>Built with care. Kept simple.</p><a href="https://sarveshk.dev">Portfolio ↗</a><a href="#top">Back to top ↑</a></footer>`;
+  return `<footer class="site-footer wrap"><p>© 2026 Sarvesh Karandikar</p><p>Built with care. Kept simple.</p><a href="/">Portfolio ↗</a><a href="#top">Back to top ↑</a></footer>`;
 }

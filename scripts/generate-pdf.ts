@@ -49,7 +49,7 @@ const RESUME_HTML = `<!doctype html>
   <header>
     <div class="topline"><h1>Sarvesh Karandikar</h1></div>
     <p class="title">Senior Software Engineer | AI, Infrastructure &amp; Cloud Systems</p>
-    <div class="contact"><a href="mailto:sarvesh1karandikar@gmail.com">sarvesh1karandikar@gmail.com</a><a href="https://www.linkedin.com/in/sarveshkarandikar/">linkedin.com/in/sarveshkarandikar</a><a href="https://github.com/sarvesh1karandikar">github.com/sarvesh1karandikar</a><a href="https://resume.sarveshk.dev">resume.sarveshk.dev</a></div>
+    <div class="contact"><a href="mailto:sarvesh1karandikar@gmail.com">sarvesh1karandikar@gmail.com</a><a href="https://www.linkedin.com/in/sarveshkarandikar/">linkedin.com/in/sarveshkarandikar</a><a href="https://github.com/sarvesh1karandikar">github.com/sarvesh1karandikar</a><a href="https://sarveshk.dev/resume/">sarveshk.dev/resume/</a></div>
   </header>
   <section>
     <h2>Profile</h2>
@@ -85,9 +85,9 @@ const RESUME_HTML = `<!doctype html>
         <div class="skills-group"><strong>Cloud &amp; IaC</strong><p>AWS, Azure, GCP, Terraform, OCI</p></div>
       </section>
       <section><h2>Selected projects</h2>
-        <div class="project"><strong>AlpacaBot</strong><p>Options-trading agent with Alpaca execution, Telegram control, and AWS hosting. <a href="https://github.com/sarvesh1karandikar/alpacabot-dashboard">GitHub</a></p></div>
-        <div class="project"><strong>ChromaDB RAG</strong><p>FastAPI semantic retrieval with centroid-based collection routing. <a href="https://github.com/sarvesh1karandikar/chromadb">GitHub</a></p></div>
-        <div class="project"><strong>DriveSuite</strong><p>WhatsApp bridge for Jellyfin/Sonarr with local and hosted model routing. <a href="https://github.com/sarvesh1karandikar/DriveSuite">GitHub</a></p></div>
+        <div class="project"><strong>AlpacaBot Dashboard</strong><p>Terminal-style monitoring interface for a trading-agent project. <a href="https://github.com/sarvesh1karandikar/alpacabot-dashboard">GitHub</a></p></div>
+        <div class="project"><strong>ChromaDB Retrieval</strong><p>FastAPI retrieval prototype with centroid-based collection routing. <a href="https://github.com/sarvesh1karandikar/chromadb">GitHub</a></p></div>
+        <div class="project"><strong>DriveSuite</strong><p>Home-media assistant in development: earlier WhatsApp bridge, newer Telegram agent, and MCP scaffold. <a href="https://github.com/sarvesh1karandikar/DriveSuite">GitHub</a></p></div>
       </section>
       <section><h2>Education</h2>
         <div class="edu"><strong>University of Southern California</strong><span>MS, Computer Science | 2020</span></div>
@@ -95,7 +95,7 @@ const RESUME_HTML = `<!doctype html>
       </section>
     </aside>
   </div>
-  <div class="footer"><span>Selected contributions delivered with cross-functional teams.</span><span>resume.sarveshk.dev</span></div>
+  <div class="footer"><span>Selected contributions delivered with cross-functional teams.</span><span>sarveshk.dev/resume/</span></div>
 </main>
 </body>
 </html>`;
