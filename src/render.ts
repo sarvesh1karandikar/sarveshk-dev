@@ -28,9 +28,9 @@ export function renderNav(links: SiteLinks): string {
   <header class="site-header nav wrap">
     <a class="wordmark" href="/">Sarvesh Karandikar<span aria-hidden="true">.</span></a>
     <nav class="links" aria-label="Résumé navigation">
-      <a href="#edu">Education</a>
       <a href="#exp">Experience</a>
       <a href="#proj">Projects</a>
+      <a href="#edu">Education</a>
       <a href="#acad">Academic</a>
       <a href="#skills">Skills</a>
       <a href="${esc(links.resume)}" class="resume-link" download>PDF résumé <span aria-hidden="true">↓</span></a>
@@ -95,7 +95,7 @@ export function renderExperience(experiences: Experience[]): string {
   return `
   <section class="exp" id="exp">
     <div class="wrap reveal">
-      <div class="label">02 — Experience</div>
+      <div class="label">01 — Experience</div>
       <h2>The throughline</h2>
       <p class="section-lead">Each role built on the last: infrastructure, platform engineering, then AI. Selected contributions within the teams I worked with.</p>
       <div class="timeline">${jobs}</div>
@@ -146,7 +146,7 @@ export function renderProjects(projects: Project[]): string {
   return `
   <section class="proj" id="proj">
     <div class="wrap reveal">
-      <div class="label">03 — Projects</div>
+      <div class="label">02 — Projects</div>
       <h2>Independent engineering projects</h2>
       <p class="section-lead">Implemented tools and evolving prototypes, with their current scope made explicit. <a href="/projects/">Explore all project stories</a>.</p>
       <div class="projlist">${cards}</div>
@@ -197,7 +197,7 @@ export function renderEducation(education: Education[]): string {
   return `
   <section class="edu" id="edu">
     <div class="wrap reveal">
-      <div class="label">01 — Education</div>
+      <div class="label">03 — Education</div>
       <h2>The academic foundation</h2>
       <p class="section-lead">Degrees that grounded the engineering and ML work above.</p>
       <div class="edulist">${rows}</div>

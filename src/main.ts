@@ -3,41 +3,14 @@
 // ============================================================
 
 import "./styles.css";
-import { content } from "./content";
-import {
-  renderNav,
-  renderHero,
-  renderExperience,
-  renderProjects,
-  renderAcademic,
-  renderEducation,
-  renderSkills,
-  renderContact,
-  renderFooter,
-} from "./render";
-
-// ---- Bootstrap the page ----
-
-const app = document.getElementById("app")!;
-app.innerHTML =
-  renderNav(content.links) +
-  '<main id="main" tabindex="-1">' +
-  renderHero(content.links) +
-  renderEducation(content.education) +
-  renderExperience(content.experience) +
-  renderProjects(content.projects) +
-  renderAcademic(content.academic, content.links.github) +
-  renderSkills(content.skills) +
-  renderContact(content.links) +
-  '</main>' +
-  renderFooter();
+// Content is rendered into HTML by the build; JavaScript only enhances navigation.
 
 // ---- Active nav highlighting ----
 
 const sections = [
-  { id: "edu", link: 'a[href="#edu"]' },
   { id: "exp", link: 'a[href="#exp"]' },
   { id: "proj", link: 'a[href="#proj"]' },
+  { id: "edu", link: 'a[href="#edu"]' },
   { id: "acad", link: 'a[href="#acad"]' },
   { id: "skills", link: 'a[href="#skills"]' },
 ];
